@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>React Props Validation Task</h1>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Value</th>
+              <th>Valid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Boolean</td>
+              <td>{this.props.propBool ? "true" : "false"}</td>
+              <td>{this.props.propBool ? "true" : "false"}</td>
+            </tr>
+            <tr>
+              <td>String</td>
+              <td>{this.props.propString}</td>
+              <td>{this.props.propString ? "true" : "false"}</td>
+            </tr>
+            <tr>
+              <td>Number</td>
+              <td>{this.props.propNumber}</td>
+              <td>{this.props.propNumber ? "true" : "false"}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
+App.propTypes = {
+  propBool: PropTypes.bool.isRequired,
+  propNumber: PropTypes.number.isRequired,
+  propString: PropTypes.string.isRequired,
+};
+App.defaultProps = {
+  propBool: true,
+  propNumber: 42,
+  propString: "Proptype",
+};
 
 export default App;
